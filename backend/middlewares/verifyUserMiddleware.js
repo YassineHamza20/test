@@ -1,7 +1,6 @@
 //? ===================================================== User Authentication Middleware =====================================================
 
 import { BadRequestError, NotAuthorizedError } from "base-error-handler";
-
 import asyncHandler from 'express-async-handler';
 import User from '../models/userModel.js';
 

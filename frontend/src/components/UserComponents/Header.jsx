@@ -33,7 +33,7 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>Mykare Health User</Navbar.Brand>
+            <Navbar.Brand>Welcome to MediColGes   </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

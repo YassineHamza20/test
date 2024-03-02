@@ -55,7 +55,7 @@ const RegisterScreen = () => {
 
   return (
     <FormContainer>
-      <h1>Register with Mykare</h1>
+      <h1>Register    </h1>
 
       <Form onSubmit={submitHandler}>
         <Form.Group className="my-2" controlId="name">

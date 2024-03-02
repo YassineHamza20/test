@@ -1,11 +1,11 @@
 {
-  "name": "MERN-User-Manager",
+  "name": "MERN  MediColGes",
   "version": "1.0.0",
-  "description": "A simple MERN Stack user management application.",
+  "description": "MERN user management  .",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "npx alwinsimon && node backend/server.js",
+    "start": " node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm run dev --prefix frontend",
     "dev": " concurrently \"npm run server\" \"npm run client\" ",
@@ -15,7 +15,7 @@
     "production": "npx alwinsimon && npm run build && node backend/server.js"
   },
   "keywords": [],
-  "author": "Dr. Alwin Simon",
+  "author": "",
   "license": "MIT",
   "dependencies": {
     "alwinsimon": "^1.0.1",

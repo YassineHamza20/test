@@ -3,9 +3,7 @@
 // ===================== Importing necessary modules =====================
 import path from "path";
 import express from "express";
-
 import cookieParser from "cookie-parser";
-
 // Custom Authentication & Error middleware from my npm package.
 // Reference: https://www.npmjs.com/package/base-auth-handler
 import { currentUser } from "base-auth-handler";
@@ -20,19 +18,16 @@ import { getServerHealth } from "./controllers/generalController.js";
 import morganLogger from "./config/logger/HTTP-request-logger.js";
 import generateSwaggerDocs from "./config/api-documentation/swagger-config.js";
 
-// Express app configuration
-const app = express();
 
+const app = express();
 // Middleware to log all HTTP requests using morgan library
 app.use(morganLogger());
 
 // ===================== Setting Rate Limit for API Calls =====================
 // Speed limiter for api calls.
 app.use(apiSpeedLimiter);
-
 // Rate limiter for api calls.
 app.use(apiRateLimiter);
-
 // ===================== Setting Static Folder =====================
 app.use(express.static("backend/Public"));
 
@@ -75,13 +70,15 @@ if(process.env.NODE_ENV === 'production') {
   
   const frontEndIndexPage = path.resolve(__dirname, 'frontend', 'dist', 'index.html');
   
+
+
+  
   // Serve Home Page request
   app.get('/', (req, res) => {
 
     res.sendFile(frontEndIndexPage);
 
   });
-
   // Serve Admin Page request
   app.get('/admin', (req, res) => {
 

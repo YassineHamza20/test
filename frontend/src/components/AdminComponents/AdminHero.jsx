@@ -29,7 +29,7 @@ const AdminHero = () => {
             </>
             : 
             <>
-              <h2 className='text-center mb-4'> Mykare Health Admin  </h2>
+              <h2 className='text-center mb-4'> MediColGes   Admin  </h2>
               <p className='text-center mb-4'> Please Login to access Admin Dashboard </p>
               <div className='d-flex'>
                 <LinkContainer to='/admin/login'>

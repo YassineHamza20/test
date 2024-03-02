@@ -3,12 +3,9 @@
 // ===================== Importing necessary modules/files =====================
 import asyncHandler from "express-async-handler";
 import AdminModel from "../models/adminModel.js";
-
 import { BadRequestError, NotAuthorizedError, NotFoundError } from "base-error-handler";
-
 import generateAuthToken from "../utils/jwtHelpers/generateAuthToken.js";
 import destroyAuthToken from "../utils/jwtHelpers/destroyAuthToken.js";
-
 import {
   fetchAllUsers,
   updateUser,
@@ -26,7 +23,6 @@ const authAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-
     // If email or password is empty, return error
     throw new BadRequestError("Email and password must be provided.");
 

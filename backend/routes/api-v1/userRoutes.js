@@ -26,13 +26,9 @@ const router = express.Router();
 //? =============================== Routes ===============================
 
 //* ==================== Authentication Routes ====================
-
 router.post("/", userSignUpDataValidation, validateRequest, registerUser);
-
 router.post("/auth", userSignInDataValidation, validateRequest, authUser);
-
 router.post("/logout", logoutUser);
-
 //* ==================== User Profile Routes ====================
 
 router

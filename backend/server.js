@@ -1,14 +1,10 @@
-//* ===================================================== Server Configuration =====================================================
-
+//* ========================= Server Configuration ====================
 // ===================== Configuring Environment Variables =====================
 import dotenv from "dotenv";
 dotenv.config();
-
 // Express app configuration
 import { app } from "./app.js";
-
 import connectDB from "./config/dbConfig.js";
-
 import logger from "./config/logger/winston-logger/loggerConfig.js";
 
 const startServer = () => {
@@ -35,7 +31,7 @@ const startServer = () => {
     throw new Error(`ADMIN_REGISTRATION_KEY must be defined in ENV !!!`);
   }
   // Server port configuration
-  const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 4000;
 
   if (!logger) {
     console.error("Logger not initialized.");
@@ -43,10 +39,8 @@ const startServer = () => {
   }
   // Log the server starting info
   logger.info("Starting-up Server.");
-
   // ===================== Database Configuration =====================
   connectDB();
-
   //NOTE ===================== Starting Server =====================
   app.listen(PORT, () => {
     console.log(
@@ -54,6 +48,5 @@ const startServer = () => {
     );
   });
 };
-
 // Starting server
 startServer();

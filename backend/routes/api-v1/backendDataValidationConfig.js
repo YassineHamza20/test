@@ -57,7 +57,6 @@ const adminUserUpdateDataValidation = [
   body("name").trim().notEmpty().withMessage("A valid name must be provided."),
   body("email").isEmail().withMessage("Provide a valid email."),
 ];
-
 export {
   userSignUpDataValidation,
   userSignInDataValidation,

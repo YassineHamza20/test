@@ -15,9 +15,11 @@ const Hero = () => {
           {userInfo ? (
             <>
               {userInfo.profileImageName && (
+                
                 <img
                   src={PROFILE_IMAGE_DIR_PATH + userInfo.profileImageName}
                   alt={userInfo.name}
+                  
                   style={{
                     width: "150px",
                     height: "150px",
@@ -28,6 +30,7 @@ const Hero = () => {
               )}
               <h2 className="text-center mb-4">
                 {" "}
+                <p>  <img className="user-image" src={`/picuser.png`} alt="User" /></p>
                 Welcome back {userInfo.name}{" "}
               </h2>
               <p className="text-center mb-4"> Email: {userInfo.email} </p>
@@ -35,13 +38,14 @@ const Hero = () => {
                 <LinkContainer to="/profile">
                   <Button variant="primary" className="me-3">
                     Manage Profile
-                  </Button>
+                  </Button> 
                 </LinkContainer>
+               
               </div>
             </>
           ) : (
             <>
-              <h2 className="text-center mb-4"> Mykare Health User </h2>
+              <h2 className="text-center mb-4"> MediColGes Health User </h2>
               <p className="text-center mb-4">
                 {" "}
                 Please Login to access User Dashboard{" "}
