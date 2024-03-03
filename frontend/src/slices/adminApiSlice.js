@@ -7,7 +7,7 @@ import {
     ADMIN_USERS_DATA_FETCH_URL,
     ADMIN_BLOCK_USER_URL,
     ADMIN_UNBLOCK_USER_URL,
-    ADMIN_UPDATE_USER_URL
+    ADMIN_UPDATE_USER_URL,
 } from '../utils/constants.js';
 
 

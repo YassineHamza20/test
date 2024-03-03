@@ -46,12 +46,12 @@ const authUser = asyncHandler(async (req, res) => {
     let registeredUserData = {
       name: user.name,
       email: user.email,
+      role:user.role
     };
 
     if (user.profileImageName) {
       registeredUserData.profileImageName = user.profileImageName;
     }
-
     res.status(201).json(registeredUserData);
   }
 
@@ -69,7 +69,7 @@ const registerUser = asyncHandler(async (req, res) => {
      # Access: PUBLIC
     */
 
-  const { name, email, password } = req.body;
+  const { name, email, password ,role} = req.body;
 
   // Check if user already exist
   const userExists = await User.findOne({ email });
@@ -85,6 +85,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name: name,
     email: email,
     password: password,
+    role:role
   });
 
   if (user) {
@@ -95,6 +96,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const registeredUserData = {
       name: user.name,
       email: user.email,
+      role:user.role
     };
 
     res.status(201).json(registeredUserData);
@@ -127,7 +129,9 @@ const getUserProfile = asyncHandler(async (req, res) => {
   const user = {
     name: req.user.name,
     email: req.user.email,
+     role:req.user.role,
     profileImageName: req.user.profileImageName,
+   
   };
 
   res.status(200).json({ user });
@@ -147,6 +151,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     // Update the user with new data if found or keep the old data itself.
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
+    user.role = req.body.role  || user.role;
 
     // If request has new password, update the user with the new password
     if (req.body.password) {
@@ -163,7 +168,9 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     res.status(200).json({
       name: updatedUserData.name,
       email: updatedUserData.email,
+      role: updatedUserData.role,
       profileImageName: updatedUserData.profileImageName,
+     
     });
   } else {
 

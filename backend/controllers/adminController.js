@@ -249,12 +249,12 @@ const updateUserData = asyncHandler(async (req, res) => {
   const userId = req.body.userId;
   const name = req.body.name;
   const email = req.body.email;
-
-  if (!userId || !name || !email) {
+  const role = req.body.role;
+  if (!userId || !name || !email ||!role ) {
     throw new BadRequestError("User data not received in request - User update failed.");
   }
 
-  const userData = { userId: userId, name: name, email: email };
+  const userData = { userId: userId, name: name, email: email,role:role };
 
   const usersUpdateStatus = await updateUser(userData);
 

@@ -2,12 +2,10 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import FormContainer from "../../components/FormContainer";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import { useRegisterMutation } from "../../slices/userApiSlice";
 import { setCredentials } from "../../slices/authSlice";
-
+ 
 import { toast } from "react-toastify";
 
 import Loader from "../../components/Loader";
@@ -17,10 +15,13 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [role, setRole] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  
+  const Role ={Patient:'Patient', Participative_Member:'Participative_Member' ,
+  Coordinator_Member:'Coordinator_Member'}
+   
   const { userInfo } = useSelector((state) => state.auth);
 
   const [register, { isLoading }] = useRegisterMutation();
@@ -41,7 +42,7 @@ const RegisterScreen = () => {
         const responseFromApiCall = await register({
           name,
           email,
-          password,
+          password,role,
         }).unwrap();
 
         dispatch(setCredentials({ ...responseFromApiCall }));
@@ -53,6 +54,7 @@ const RegisterScreen = () => {
     }
   };
 
+   
   return (
     <FormContainer>
       <h1>Register    </h1>
@@ -97,6 +99,34 @@ const RegisterScreen = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
+
+       
+
+
+        <Form.Group className="my-2" controlId="role">
+  <Form.Label>Role</Form.Label>
+  <Form.Control
+    as="select"
+    value={role}
+    onChange={(e) => setRole(e.target.value)}
+  >
+    <option value={Role.Patient}>Patient</option>
+    <option value={Role.Participative_Member}>Participative Member</option>
+    <option value={Role.Coordinator_Member}>Coordinator Member</option>
+  </Form.Control>
+</Form.Group>
+
+
+         {/* <Form.Group className="my-2" controlId="role">
+          <Form.Label>Role</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter role here..."
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          ></Form.Control>
+        </Form.Group>  */}
+
 
         <Button type="submit" variant="primary" className="mt-3">
           {" "}

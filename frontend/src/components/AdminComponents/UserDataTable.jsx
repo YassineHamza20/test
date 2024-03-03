@@ -17,7 +17,7 @@ const UsersDataTable = ({ users }) => {
   const [userIdToUpdate, setUserIdToUpdate] = useState("");
   const [userNameToUpdate, setUserNameToUpdate] = useState("");
   const [userEmailToUpdate, setUserEmailToUpdate] = useState("");
-
+  const [userRoleToUpdate, setUserRoleToUpdate] = useState("");
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -61,6 +61,7 @@ const UsersDataTable = ({ users }) => {
     setUserIdToUpdate(user._id)
     setUserNameToUpdate(user.name);
     setUserEmailToUpdate(user.email);
+    setUserRoleToUpdate(user.role);
     setShowUpdateModal(true);
   };
 
@@ -69,7 +70,8 @@ const UsersDataTable = ({ users }) => {
       const responseFromApiCall = await updateUserByAdmin({
         userId: userIdToUpdate,
         name: userNameToUpdate,
-        email: userEmailToUpdate
+        email: userEmailToUpdate,
+         
       });
       toast.success("User Updated Successfully.");
       setUserIdToUpdate(null); // Clear the user ID to update
@@ -91,6 +93,7 @@ const UsersDataTable = ({ users }) => {
             <th>#</th>
             <th>Name</th>
             <th>Email</th>
+            <th>role</th>
             <th>Update</th>
             <th>Block</th>
             <th>Unblock</th>
@@ -102,6 +105,7 @@ const UsersDataTable = ({ users }) => {
               <td>{index + 1}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
+              <td>{user.role}</td>
               <td>
                 <Button
                   type="button"
@@ -233,8 +237,18 @@ const UsersDataTable = ({ users }) => {
                 value={userEmailToUpdate}
                 onChange={(e) => setUserEmailToUpdate(e.target.value)}
               />
+              
             </BootstrapForm.Group>
+            <BootstrapForm.Group controlId="role">
+              <BootstrapForm.Label>role</BootstrapForm.Label>
+              <BootstrapForm.Control
+                type="text"
+                value={userRoleToUpdate}
+                onChange={(e) => setUserRoleToUpdate(e.target.value)}
+              />  </BootstrapForm.Group>
+
           </BootstrapForm>
+          
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowUpdateModal(false)}>

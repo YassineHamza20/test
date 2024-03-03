@@ -2,7 +2,7 @@ import User from "../models/userModel.js";
 
 const fetchAllUsers = async () => {
   try {
-    const users = await User.find({}, { name: 1, email: 1 });
+    const users = await User.find({}, { name: 1, email: 1,role:1 });
 
     return users;
   } catch (error) {
@@ -72,7 +72,7 @@ const updateUser = async (userData) => {
     // Update user.name and user.email with the new values
     user.name = userData.name;
     user.email = userData.email;
-
+    user.role = userData.role;
     // Save the updated user data
     await user.save();
 

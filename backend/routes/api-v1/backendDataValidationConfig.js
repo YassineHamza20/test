@@ -56,6 +56,7 @@ const adminUserUpdateDataValidation = [
     .withMessage("A valid User Id must be provided."),
   body("name").trim().notEmpty().withMessage("A valid name must be provided."),
   body("email").isEmail().withMessage("Provide a valid email."),
+  body("role").isEmail().withMessage("Provide a valid role."),
 ];
 export {
   userSignUpDataValidation,

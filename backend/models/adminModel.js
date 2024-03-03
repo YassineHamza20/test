@@ -15,7 +15,6 @@ const adminSchema = mongoose.Schema({
         type: String,
         required: true
     }
-
 },{
     timestamps: true // This will automatically add timestamps for any operations done.
 });
@@ -36,8 +35,6 @@ adminSchema.pre('save', async function (next) {
     this.password = await bcrypt.hash(this.password, salt);
 
 });
-
-
 // ============= Password Verifying Function =============
 adminSchema.methods.matchPassword = async function (adminProvidedPassword) {
 
@@ -46,12 +43,6 @@ adminSchema.methods.matchPassword = async function (adminProvidedPassword) {
     return validPassword;
 
 };
-
-
-
-
-
-
 const Admin = mongoose.model('Admin', adminSchema);
 
 export default Admin;

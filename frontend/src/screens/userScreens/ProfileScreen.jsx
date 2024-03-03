@@ -14,12 +14,17 @@ import Loader from "../../components/Loader";
 import { PROFILE_IMAGE_DIR_PATH } from "../../utils/constants";
 
 const ProfileScreen = () => {
+
+  const Role ={Patient:'Patient', Participative_Member:'Participative_Member' ,
+  Coordinator_Member:'Coordinator_Member'}
+  
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+ const [role, setRole] = useState("");
   const [profileImage, setProfileImage] = useState();
-
+  
   const dispatch = useDispatch();
 
   const { userInfo } = useSelector((state) => state.auth);
@@ -29,7 +34,8 @@ const ProfileScreen = () => {
   useEffect(() => {
     setName(userInfo.name);
     setEmail(userInfo.email);
-  }, [userInfo.name, userInfo.email]);
+    setRole(userInfo.role);
+  }, [userInfo.name, userInfo.email,userInfo.role ] );
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -43,6 +49,7 @@ const ProfileScreen = () => {
         formData.append("name", name);
         formData.append("email", email);
         formData.append("password", password);
+        formData.append("role", role);
        // formData.append("profileImage", profileImage);
 
         const responseFromApiCall = await updateProfile(formData).unwrap();
@@ -126,6 +133,30 @@ const ProfileScreen = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
+
+        
+
+         {/* <Form.Group className="my-2" controlId="role">
+          <Form.Label>Role</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter role here..."
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          ></Form.Control>
+        </Form.Group>  */}
+
+ <Form.Group className="my-2" controlId="role">
+  <Form.Label>Role</Form.Label>
+  <Form.Control
+    as="select"
+    value={role}
+    onChange={(e) => setRole(e.target.value)}
+  > <option value={Role.Patient}>Patient</option>
+    <option value={Role.Participative_Member}>Participative Member</option>
+    <option value={Role.Coordinator_Member}>Coordinator Member</option>
+  </Form.Control>
+</Form.Group>
 
         {/* { <Form.Group className="my-2" controlId="profileImage">
           <Form.Label>Profile Picture</Form.Label>
